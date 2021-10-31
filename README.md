@@ -10,7 +10,7 @@ You can embed Prisma Studio within your Express application.
 
 ### Add Express Middleware.
 
-아래와 같이 임포트하여 사용할 수 있습니다.
+You can import it and use it as follows.
 
 ```javascript
 import express from 'express';
