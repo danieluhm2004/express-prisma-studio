@@ -1,6 +1,6 @@
 {
   "name": "express-prisma-studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "📦 - Unofficial express studio middleware for Express.js",
@@ -22,8 +22,7 @@
     "@prisma/sdk": "^3.3.0",
     "@prisma/studio-server": "^0.438.0",
     "express": "^4.17.1",
-    "express-http-proxy": "^1.6.3",
-    "prisma": "^3.3.0"
+    "express-http-proxy": "^1.6.3"
   },
   "devDependencies": {
     "@types/eslint": "^7.28.2",

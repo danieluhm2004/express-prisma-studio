@@ -2,6 +2,7 @@ import { StudioServer } from '@prisma/studio-server';
 import { NextFunction, Request, Response, Router } from 'express';
 import proxy from 'express-http-proxy';
 import { join } from 'path';
+import { cwd } from 'process';
 import { getPort } from '.';
 
 export * from './tools';
@@ -22,14 +23,14 @@ export const PrismaStudioMiddleware = (
 ) => {
   const { schemaPath, assetPath, basePath } = {
     schemaPath: './node_modules/.prisma/client/schema.prisma',
-    assetPath: '../node_modules/@prisma/studio/dist',
+    assetPath: './node_modules/@prisma/studio/dist',
     basePath: '/client',
     ...props,
   };
 
   const router = Router();
   const { client, engine } = prisma;
-  const staticAssetDir = join(__dirname, assetPath);
+  const staticAssetDir = join(cwd(), assetPath);
   const versions = { prisma: client, queryEngine: engine };
   const PrismaStudioReadyMiddleware = async (
     req: Request,
