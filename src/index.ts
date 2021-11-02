@@ -57,9 +57,8 @@ export const PrismaStudioMiddleware = (
   const PrismaProxy = proxy(getHost, {
     async userResDecorator(proxyRes, proxyResData, req) {
       if (['/http/databrowser.js', '/assets/index.js'].includes(req.path)) {
-        const baseURL = req.originalUrl.split('/')[0];
-        const apiPath = `/${join(baseURL, 'api')}`;
-        return proxyResData.toString().replace(/\/api/g, apiPath);
+        const baseURL = req.originalUrl.replace(req.path, '');
+        return proxyResData.toString().replace(/\/api/g, join(baseURL, 'api'));
       }
 
       return proxyResData;
