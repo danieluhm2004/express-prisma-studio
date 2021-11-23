@@ -30,7 +30,9 @@ const PrismaStudioMiddleware = (prisma, props) => {
     };
     const router = (0, express_1.Router)();
     const { client, engine } = prisma;
-    const staticAssetDir = (0, path_1.join)((0, process_1.cwd)(), assetPath);
+    const staticAssetDir = !assetPath.startsWith('/')
+        ? (0, path_1.join)((0, process_1.cwd)(), assetPath)
+        : assetPath;
     const versions = { prisma: client, queryEngine: engine };
     const PrismaStudioReadyMiddleware = async (req, res, next) => {
         if (!global._prismaStudio) {

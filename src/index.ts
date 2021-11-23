@@ -30,7 +30,10 @@ export const PrismaStudioMiddleware = (
 
   const router = Router();
   const { client, engine } = prisma;
-  const staticAssetDir = join(cwd(), assetPath);
+  const staticAssetDir = !assetPath.startsWith('/')
+    ? join(cwd(), assetPath)
+    : assetPath;
+
   const versions = { prisma: client, queryEngine: engine };
   const PrismaStudioReadyMiddleware = async (
     req: Request,
